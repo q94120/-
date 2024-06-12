@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彈出式卡片</title>
+    <link rel="stylesheet" href="./_css/bootstrap.css">
+
+    <link rel="stylesheet" href="./css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* 彈出式按鈕的樣式 */
+        .popup-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .popup-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 彈出式卡片的樣式 */
+        .popup-card {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 550px;
+            height: 600px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .popup-content {
+            position: relative;
+
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* 背景遮罩 */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+        }
+
+        /* 彈出式卡片顯示時，背景遮罩顯示 */
+        .popup-card.show {
+            display: block;
+        }
+
+        .popup-overlay.show {
+            display: block;
+        }
+
+        /* close button 樣式以及hover設定 */
+        .close-button>i {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            color: rgb(255, 225, 0);
+            z-index: 9999;
+        }
+
+        .close-button>i:hover {
+            transform: scale(1.4);
+        }
+
+        /* card跟img的樣式還有格式 */
+
+        .card {
+
+            width: 550px;
+            height: 270px;
+            margin-top: -20px;
+            margin-right: -20px;
+            margin-left: -20px;
+        }
+
+        .imgsize {
+            border-radius: 10px;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* card裡面的備註的樣式 */
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            box-sizing: border-box; /* 確保填充和邊框包含在元素的總寬度和高度內 */
+        }
+
+        /* 下拉選單 */
+
+        /* 下拉菜單容器 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 下拉菜單按鈕 */
+        .dropdown input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 500px;
+            box-sizing: border-box;
+        }
+
+        /* 下拉菜單內容 */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        /* 下拉菜單中的每一項 */
+        .dropdown-content div {
+            padding: 12px 16px;
+            cursor: pointer;
+        }
+
+        .dropdown-content div:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 顯示下拉菜單內容 */
+        .dropdown input:focus + .dropdown-content {
+            display: block;
+        }
+        
+        .read:hover { 
+            cursor: default; /* 將鼠標指針設置為箭頭 */
+        }
+
+        /* 卡片裡的購物車按鈕 */
+    
+        .card-shopbtn {
+            width: 400px;
+            position: absolute;
+            right: 0;
+           
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 彈出式按鈕 -->
+    <!-- <button class="popup-button" data-target="popupCard1">顯示卡片 1</button> -->
+    <button class="popup-button" data-target="popupCard2">顯示卡片 2</button>
+    <!-- 添加更多按鈕 -->
+
+    <!-- 彈出式卡片 -->
+    <!-- <div id="popupCard1" class="popup-card">
+        <div class="popup-content">
+            <span class="close-button" onclick="closePopup('popupCard1')">&times;</span>
+            <h2>這是彈出式卡片 1</h2>
+            <p>這是彈出式卡片 1 的內容。</p>
+        </div>
+    </div> -->
+
+    <div id="popupCard2" class="popup-card">
+        <div class="popup-content">
+            <span class="close-button" 
+            onclick="closePopup('popupCard2')" 
+            style="font-size: 24px; color: rgb(255, 225, 0); z-index: 9999;">
+                <i class="bi bi-x-circle"></i>
+            </span>
+            <div class="card">
+                <img src="./起司蛋餅.jpg" class="imgsize">
+            </div>
+            <br>
+            <h2>起司蛋餅</h2>
+            <small class="text-muted">香濃鹹香的起司搭配蛋餅皮，絕對經典的蛋餅口味！</small>
+            <br><br>
+            <b>$52</b>
+            <hr>
+            
+            <form>
+                <label for="multiline-input">餐點備註</label>
+                <p class="text-muted" style="font-size: small;margin-top: 7px;">
+                    有些餐點無法更改食材或調味料；若無法符合您的要求，請見諒哦
+                </p>
+                <textarea id="multiline-input" name="multiline-input" placeholder="例:不要醬料、加辣"></textarea>
+            </form>
+            <b>若此商品目前暫時無法供應</b>
+            <div class="dropdown">
+                <input class="read" type="text" placeholder="選擇一個選項" readonly>
+                <div class="dropdown-content">
+                    <div>將此商品從我的訂單移除</div>
+                    <div>取消訂單或請店家打電話給我</div>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br>
+            <hr>
+            <button class="bg-warning rounded border-warning card-shopbtn" data-target="">加入購物車</button>
+            <br>
+        </div>
+    </div>
+
+    <!-- 添加更多卡片 -->
+
+    <!-- 背景遮罩 -->
+    <div class="popup-overlay" onclick="closeAllPopups()"></div>
+
+    <script>
+        // 關閉彈出式卡片
+        function closePopup(id) {
+            document.getElementById(id).classList.remove('show');
+            document.querySelector('.popup-overlay').classList.remove('show');
+        }
+
+        // 關閉所有彈出式卡片
+        function closeAllPopups() {
+            document.querySelectorAll('.popup-card').forEach(function (card) {
+                card.classList.remove('show');
+            });
+            document.querySelector('.popup-overlay').classList.remove('show');
+        }
+
+        // 當頁面加載完畢後設置按鈕的點擊事件
+        document.addEventListener("DOMContentLoaded", function () {
+            const popupButtons = document.querySelectorAll(".popup-button");
+
+            // 為每個按鈕添加點擊事件
+            popupButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const targetId = button.getAttribute("data-target");
+                    // 先關閉所有彈出式卡片
+                    closeAllPopups();
+                    // 再顯示目標卡片和背景遮罩
+                    document.getElementById(targetId).classList.add('show');
+                    document.querySelector('.popup-overlay').classList.add('show');
+                });
+            });
+        });
+        
+        // 下拉選單JS
+        // 為下拉菜單項目添加點擊事件，將所選值設置為輸入框的值
+    document.querySelectorAll('.dropdown-content div').forEach(function(item) {
+        item.addEventListener('click', function() {
+            var input = item.parentElement.previousElementSibling;
+            input.value = item.textContent;
+            item.parentElement.style.display = 'none'; // 隱藏下拉菜單
+        });
+    });
+
+    // 點擊輸入框之外的地方隱藏下拉菜單
+    document.addEventListener('click', function(event) {
+        var dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(function(dropdown) {
+            if (!dropdown.parentElement.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    });
+
+    // 輸入框獲得焦點時顯示下拉菜單
+    document.querySelectorAll('.dropdown input').forEach(function(input) {
+        input.addEventListener('focus', function() {
+            this.nextElementSibling.style.display = 'block';
+        });
+    });
+    </script>
+
+</body>
+
+</html>

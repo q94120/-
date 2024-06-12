@@ -1,0 +1,586 @@
+button:hover {
+    border: 100px;
+}
+
+
+.imgdemo {
+    max-width: 150px;
+    max-height: 120px;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: 60px;
+}
+
+.navbtn {
+    background-color: white;
+    border: white;
+}
+
+.navbtn:hover {
+    background-color: rgb(255, 255, 189);
+    border-bottom: 10px solid yellow;
+    border-radius: 20px;
+}
+
+.navbtn:active {
+    background-color: rgb(255, 255, 189);
+    border-bottom: 10px solid yellow;
+}
+
+.figcard {
+    border: solid 1px rgb(199, 199, 199);
+    border-radius: 10px;
+    max-height: 300px;
+    cursor: pointer;
+}
+
+
+.figcard:hover {
+    background-color: rgb(255, 255, 220);
+    transform: scale(1.02);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#hot1 {
+    scroll-margin-top: 275px;
+}
+
+#hot2 {
+    scroll-margin-top: 275px;
+}
+
+#hot3 {
+    scroll-margin-top: 275px;
+}
+
+#hot4 {
+    scroll-margin-top: 275px;
+}
+
+#hot5 {
+    scroll-margin-top: 275px;
+}
+
+#hot6 {
+    scroll-margin-top: 275px;
+}
+
+#hot7 {
+    scroll-margin-top: 275px;
+}
+
+#hot8 {
+    scroll-margin-top: 275px;
+}
+
+#hot9 {
+    scroll-margin-top: 275px;
+}
+
+.footer {
+    text-decoration: none;
+    color: black;
+}
+
+.footer:hover {
+    color: rgb(255, 251, 53);
+}
+
+@media screen and (max-width: 768px) {
+    .navhidden {
+        visibility: hidden;
+    }
+
+}
+
+/* 導覽列左右滑動CSS設定 */
+/* styles.css */
+
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-wrapper {
+    overflow-x: hidden;
+    white-space: nowrap;
+    flex-grow: 1;
+}
+
+.navtest {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: transform 0.3s ease;
+}
+
+.navtest li {
+    display: inline-block;
+}
+
+.navtest a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+.navtest a:hover {
+    background-color: #ffffad;
+}
+
+.nav-btn {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.nav-btn:hover {
+    background-color: #ffffb1;
+}
+
+.nav-btn.left {
+    position: absolute;
+    left: 0;
+}
+
+.nav-btn.right {
+    position: absolute;
+    right: 0;
+}
+
+
+
+
+
+/* hamberger漢堡選單css */
+
+
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    /* position: relative;  因為會影響到fixed-top 所以先註解掉*/
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+    display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+    color: rgb(0, 0, 0);
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+    background: rgb(255, 255, 255);
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 10;
+    color: black;
+}
+
+/* Add a grey background color on mouse-over */
+.topnav>div a:hover {
+    background-color: #ffffb1;
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+    .navvisible {
+        visibility: hidden;
+    }
+
+}
+
+
+/* go to top button */
+
+/* 顯示回到頂部按鈕 */
+.go-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff6a4;
+    color: rgb(138, 138, 138);
+    border: none;
+    border-radius: 90%;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 9998;
+}
+
+/* 滾動條超過一定高度才顯示按鈕 */
+.show {
+    display: block;
+}
+
+/* card樣式 */
+
+/* 彈出式按鈕的樣式 */
+/* .popup-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.popup-button:hover {
+    background-color: #0056b3;
+} */
+
+.popup-button:hover {
+    padding: 10px;
+    background-color: rgb(255, 255, 189);
+    cursor: pointer;
+    border-radius: 10px;
+    /* z-index: 9999;
+    position: relative; */
+}
+
+/* 彈出式卡片的樣式 */
+.popup-card {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 550px;
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.popup-card1 {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 150px;
+    height: 40px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.popup-content {
+    position: relative;
+
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* 背景遮罩 */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+
+/* 彈出式卡片顯示時，背景遮罩顯示 */
+.popup-card.show {
+    display: block;
+}
+
+.popup-overlay.show {
+    display: block;
+}
+
+/* close button 樣式以及hover設定 */
+.close-button>i {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    color: rgb(255, 225, 0);
+    z-index: 9999;
+}
+
+.close-button>i:hover {
+    transform: scale(1.4);
+}
+
+/* card跟img的樣式還有格式 */
+
+.card {
+
+    width: 550px;
+    height: 270px;
+    margin-top: -20px;
+    margin-right: -20px;
+    margin-left: -20px;
+}
+
+.imgsize {
+    border-radius: 10px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* card裡面的備註的樣式 */
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    box-sizing: border-box;
+    /* 確保填充和邊框包含在元素的總寬度和高度內 */
+}
+
+/* 下拉選單 */
+
+/* 下拉菜單容器 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* 下拉菜單按鈕 */
+.dropdown input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 500px;
+    box-sizing: border-box;
+}
+
+/* 下拉菜單內容 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* 下拉菜單中的每一項 */
+.dropdown-content div {
+    padding: 12px 16px;
+    cursor: pointer;
+}
+
+.dropdown-content div:hover {
+    background-color: #f1f1f1;
+}
+
+/* 顯示下拉菜單內容 */
+.dropdown input:focus+.dropdown-content {
+    display: block;
+}
+
+.read:hover {
+    cursor: default;
+    /* 將鼠標指針設置為箭頭 */
+}
+
+/* 卡片裡的購物車按鈕 */
+
+.card-shopbtn {
+    width: 380px;
+    position: absolute;
+    right: 0;
+    height: 40px;
+}
+
+
+/* 購物車css樣式 */
+
+/* .products {
+    width: 45%;
+} */
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background-color: #feffe0;
+    border-left: 1px solid #cccccc;
+    padding: 20px;
+    transition: right 0.3s ease;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.cart.show {
+    right: 0;
+}
+
+.cart-content {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart h2 {
+    margin-top: 0;
+}
+
+.close-cart {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 20px;
+}
+
+.quantity-input {
+    cursor: default;
+    width: 30px;
+}
+
+.close-btn {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.close-btn:hover {
+    transform: scale(1.4);
+}
+
+.quantity-button {
+    width: 28px;
+    height: 28px;
+    border-radius: 100px;
+    color: #ffea00;
+    background-color: white;
+    border-color: #aeaeae;
+
+}
+
+/* 移除按钮样式 */
+.cart-item-remove {
+    background-color: #ff4141;
+    /* 背景颜色 */
+    color: #ffffff;
+    /* 文字颜色 */
+    border: none;
+    /* 去掉边框 */
+    padding: 2px 6px;
+    /* 按钮内边距 */
+    border-radius: 5px;
+    /* 圆角 */
+    cursor: pointer;
+    /* 鼠标指针样式 */
+    margin-left: 5px;
+}
+
+/* 移除按钮悬停状态 */
+.cart-item-remove:hover {
+    background-color: #cc0000;
+    /* 鼠标悬停时的背景颜色 */
+}
+
+.point:hover {
+    cursor: pointer;
+}
+
+.show-cart-button:hover {
+    padding: 10px;
+    background-color: rgb(255, 255, 189);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.submit-button {
+    background-color: white;
+}
+
+.submit-button:hover {
+    padding: 10px;
+    padding-left: 6px;
+    background-color: rgb(255, 255, 189);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.addEggHover {
+    display: flex;
+    /* justify-content: space-between;
+    align-items: center; */
+}
+
+.addEggHover:hover {
+    padding: 10px;
+    padding-left: 6px;
+    background-color: rgb(255, 255, 189);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.add-egg-option {
+    accent-color: yellow;
+    background-color: yellow ;
+    color: white;
+    border-color: yellow;
+}
+
+.egg-price {
+    margin-left: auto;
+}
+
+.cheese-price {
+    margin-left: auto;
+}

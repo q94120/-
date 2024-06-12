@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易購物車</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+        } */
+
+        .products {
+            width: 45%;
+        }
+
+        .cart {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: #f0f0f0;
+            border-left: 1px solid #ccc;
+            padding: 20px;
+            transition: right 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .cart.show {
+            right: 0;
+        }
+
+        .cart-content {
+            height: calc(100% - 40px);
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart h2 {
+            margin-top: 0;
+        }
+
+        .close-cart {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 20px;
+        }
+
+        .quantity-input {
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="products">
+        <h2>商品</h2>
+        <div class="product" data-name="商品1" data-price="10">
+            商品1 - $10
+            <button class="quantity-button decrease">-</button>
+            <input type="number" value="1" min="1" class="quantity-input" readonly>
+            <button class="quantity-button increase">+</button>
+            <button class="add-to-cart">加入購物車</button>
+        </div>
+        <div class="product" data-name="商品2" data-price="15">
+            商品2 - $15
+            <button class="quantity-button decrease">-</button>
+            <input type="number" value="1" min="1" class="quantity-input" readonly>
+            <button class="quantity-button increase">+</button>
+            <button class="add-to-cart">加入購物車</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <div class="cart-header">
+            <h2>購物車</h2>
+            <button class="close-cart">關閉</button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-items"></div>
+            <div class="cart-total">總金額: $<span>0.00</span></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const addToCartButtons = document.querySelectorAll(".add-to-cart");
+            const cart = document.querySelector(".cart");
+            const closeCartButton = document.querySelector(".close-cart");
+            const cartItemsElement = document.querySelector(".cart-items");
+            const cartTotalElement = document.querySelector(".cart-total span");
+            let cartItems = [];
+
+            // 加入購物車
+            function addToCart(name, price, quantity) {
+                const existingItemIndex = cartItems.findIndex(item => item.name === name);
+                if (existingItemIndex !== -1) {
+                    cartItems[existingItemIndex].quantity += quantity;
+                } else {
+                    cartItems.push({ name, price, quantity });
+                }
+                renderCart();
+                cart.classList.add("show");
+            }
+
+            // 從購物車中刪除商品
+            function removeFromCart(index) {
+                cartItems.splice(index, 1);
+                renderCart();
+            }
+
+            // 渲染購物車
+            function renderCart() {
+                cartItemsElement.innerHTML = "";
+                let total = 0;
+                cartItems.forEach((item, index) => {
+                    const cartItem = document.createElement("div");
+                    cartItem.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
+                    const removeButton = document.createElement("button");
+                    removeButton.textContent = "移除";
+                    removeButton.addEventListener("click", (event) => {
+                        event.stopPropagation(); // 阻止事件冒泡
+                        removeFromCart(index);
+                    });
+                    cartItem.appendChild(removeButton);
+                    cartItemsElement.appendChild(cartItem);
+                    total += item.price * item.quantity;
+                });
+                cartTotalElement.textContent = total.toFixed(2);
+            }
+
+            // 為每個加入購物車按鈕添加點擊事件監聽器
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const product = button.parentElement;
+                    const name = product.dataset.name;
+                    const price = parseFloat(product.dataset.price);
+                    const quantityInput = product.querySelector(".quantity-input");
+                    const quantity = parseInt(quantityInput.value);
+                    addToCart(name, price, quantity);
+                });
+            });
+
+            // 為減少按鈕添加事件監聽器
+            document.querySelectorAll('.decrease').forEach(item => {
+                item.addEventListener('click', event => {
+                    let input = item.nextElementSibling;
+                    let value = parseInt(input.value);
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                });
+            });
+
+            // 為增加按鈕添加事件監聽器
+            document.querySelectorAll('.increase').forEach(item => {
+                item.addEventListener('click', event => {
+                    let input = item.previousElementSibling;
+                    let value = parseInt(input.value);
+                    input.value = value + 1;
+                });
+            });
+
+            // 關閉購物車
+            closeCartButton.addEventListener("click", () => {
+                cart.classList.remove("show");
+            });
+
+            // 在購物車以外的地方點擊時關閉購物車
+            document.addEventListener("click", (event) => {
+                if (!cart.contains(event.target) && !event.target.classList.contains("add-to-cart") && !event.target.classList.contains("quantity-button")) {
+                    cart.classList.remove("show");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

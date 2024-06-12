@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Checkbox</title>
+    <style>
+        /* 隐藏默认复选框 */
+        .custom-checkbox input[type="checkbox"] {
+            display: none;
+        }
+
+        /* 创建自定义复选框 */
+        .custom-checkbox label {
+            position: relative;
+            cursor: pointer;
+            padding-left: 25px; /* 根据需要调整 */
+            display: inline-flex;
+            align-items: center;
+            font-size: 16px; /* 根据需要调整字体大小 */
+        }
+
+        .custom-checkbox label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 18px; /* 复选框宽度 */
+            height: 18px; /* 复选框高度 */
+            border: 2px solid #ccc;
+            border-radius: 3px; /* 根据需要调整 */
+            background-color: #fff; /* 复选框背景色 */
+            box-sizing: border-box;
+        }
+
+        /* 勾选状态下的复选框 */
+        .custom-checkbox input[type="checkbox"]:checked + label::before {
+            background-color: #ffff30; /* 勾选时的背景色 */
+            border-color: #ffff30; /* 勾选时的边框色 */
+        }
+
+        /* 勾选状态下显示勾勾 */
+        .custom-checkbox input[type="checkbox"]:checked + label::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="custom-checkbox">
+        <input type="checkbox" id="addEgg" class="add-egg-option">
+        <label for="addEgg">加蛋 <span class="egg-price">$15</span></label>
+    </div>
+</body>
+
+</html>

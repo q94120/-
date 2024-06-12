@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易購物車</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        } */
+
+        .products {
+            width: 45%;
+        }
+
+        .cart {
+            position: fixed; /* 固定位置 */
+            top: 0;
+            right: -400px; /* 初始時在右側外部 */
+            width: 400px;
+            height: 100%; /* 占滿整個視窗高度 */
+            background-color: #f0f0f0;
+            border-left: 1px solid #ccc;
+            padding: 20px;
+            transition: right 0.3s ease; /* 動畫效果 */
+            box-sizing: border-box;
+        }
+
+        .cart.show {
+            right: 0; /* 彈出時移到右側內部 */
+        }
+
+        .cart-content {
+            height: calc(90% - 40px); /* 調整內容高度 */
+            overflow-y: auto; /* 超出時顯示滾動條 */
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart h2 {
+            margin-top: 0;
+        }
+
+        /* 其他樣式保持不變 */
+    </style>
+</head>
+<body>
+    <div class="products">
+        <h2>商品</h2>
+        <div class="product" data-name="商品1" data-price="10">
+            <span>商品1 - $10</span>
+            <button class="quantity-button" data-action="decrease" style="margin-left: 10px;">-</button>
+            <input type="number" value="1" min="1" class="quantity-input read" readonly>
+            <button class="quantity-button" data-action="increase" style="margin-right: 10px;">+</button>
+            <button class="add-to-cart">加入購物車</button>
+        </div>
+        <div class="product" data-name="商品2" data-price="15">
+            <span>商品2 - $15</span>
+            <button class="quantity-button" data-action="decrease">-</button>
+            <input type="number" value="1" min="1" class="quantity-input read" readonly>
+            <button class="quantity-button" data-action="increase">+</button>
+            <button class="add-to-cart">加入購物車</button>
+        </div>
+        <!-- 其他商品 -->
+    </div>
+
+    <div class="cart">
+        <div class="cart-header">
+            <h2>購物車</h2>
+            <button id="close-cart">關閉</button>
+        </div>
+        <div class="cart-content" id="cart-items">
+            <!-- 購物車商品會在這裡動態生成 -->
+        </div>
+        <div class="total">
+            <span>總價格:</span>
+            <span id="cart-total">$0.00</span>
+            <button id="" style="position: absolute; right: 0; width: 100px;">購買</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cart = document.querySelector(".cart");
+            const addToCartButtons = document.querySelectorAll(".add-to-cart");
+            const cartItemsElement = document.getElementById("cart-items");
+            const cartTotalElement = document.getElementById("cart-total");
+            const closeCartButton = document.getElementById("close-cart");
+            let cartItems = [];
+
+            // 加入購物車
+            function addToCart(name, price, quantity) {
+                const item = cartItems.find(item => item.name === name);
+                if (item) {
+                    item.quantity += quantity;
+                } else {
+                    cartItems.push({ name, price, quantity });
+                }
+                renderCart();
+            }
+
+            // 從購物車中刪除商品
+            function removeFromCart(name) {
+                cartItems = cartItems.filter(item => item.name !== name);
+                renderCart();
+            }
+
+            // 渲染購物車
+            function renderCart() {
+                cartItemsElement.innerHTML = "";
+                let total = 0;
+                cartItems.forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
+                    const removeButton = document.createElement("button");
+                    removeButton.textContent = "移除";
+                    removeButton.classList.add("remove-from-cart");
+                    removeButton.addEventListener("click", () => {
+                        removeFromCart(item.name);
+                    });
+                    li.appendChild(removeButton);
+                    cartItemsElement.appendChild(li);
+                    total += item.price * item.quantity;
+                });
+                cartTotalElement.textContent = `$${total.toFixed(2)}`;
+            }
+
+            // 為每個加入購物車按鈕添加點擊事件監聽器
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", (event) => {
+                    const product = button.parentElement;
+                    const name = product.dataset.name;
+                    const price = parseFloat(product.dataset.price);
+                    const quantityInput = product.querySelector(".quantity-input");
+                    const quantity = parseInt(quantityInput.value);
+                    addToCart(name, price, quantity);
+                    // 顯示購物車
+                    cart.classList.add("show");
+                    // 阻止事件冒泡，避免觸發全局點擊事件
+                    event.stopPropagation();
+                });
+            });
+
+            // 初始化渲染購物車
+            renderCart();
+
+            // 點擊購物車以外的區域隱藏購物車
+            document.addEventListener("click", function(event) {
+                if (!event.target.closest(".cart") && !event.target.closest(".add-to-cart") && cart.classList.contains("show")) {
+                    cart.classList.remove("show");
+                }
+            });
+
+            // 點擊關閉按鈕隱藏購物車
+            closeCartButton.addEventListener("click", () => {
+                cart.classList.remove("show");
+            });
+        });
+
+        
+
+    </script>
+</body>
+</html>

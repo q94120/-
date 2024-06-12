@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點餐系統</title>
+    <link rel="stylesheet" href="./_css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- 最上方Logo導覽列部分左側margin-left: 100px  右側暫時使用me-5 -->
+    <!-- <nav class="navhidden navbar navbar-expand-lg ">
+        <div class="container-fluid bg-white fixed-top p-3 shadow d-flex ">
+            <a class="navbar-brand text-warning" href="#" style="margin-left: 100px;">
+                <img width="40px" src="./cat-icon.jpg" alt="" class="">
+                foodcat
+            </a>
+
+            <input class="ms-auto" type="text"
+                style="width: 300px; border-radius: 15px;border-color: yellow; background-color: rgb(255, 255, 210);"
+                placeholder="請輸入地址">
+
+            <button class="text-warning fw-bold rounded border-warning ms-auto">登入</button>
+            <button class=" bg-warning text-white fw-bold rounded border-warning">註冊</button>
+        </div>
+
+    </nav> -->
+    <!-- 改良版LOGO導覽 -->
+    <nav class="navbar navhidden navbar-expand-lg container-fluid bg-white fixed-top p-3 shadow d-flex">
+
+        <a class="navbar-brand text-warning" href="./小專.html" style="margin-left: 100px;">
+            <img width="40px" src="./cat-icon.jpg" alt="" class="">
+            foodcat
+        </a>
+
+        <input class="ms-auto" type="text"
+            style="width: 300px; border-radius: 15px;border-color: yellow; background-color: rgb(255, 255, 210);"
+            placeholder="請輸入地址">
+        <a href="#"><i class="bi bi-search ms-2 text-warning"></i></a>
+
+        <button class="text-warning fw-bold rounded border-warning ms-auto">
+            <a href="./小專_會員登入.html" style="color: inherit; text-decoration: none;" class="fw-bold mt-2">&nbsp;登入</a>
+        </button>
+        <button class=" bg-warning text-white fw-bold rounded border-warning">
+            <a href="./小專_會員註冊.html" style="color: inherit; text-decoration: none;" class="fw-bold">&nbsp;註冊</a>
+        </button>
+
+    </nav>
+
+
+
+    <!-- hamberger導覽 -->
+
+    <nav class="navvisible topnav navbar container-fluid bg-white fixed-top p-3 shadow d-flex">
+        <a class="navbar-brand text-warning" href="./小專.html">
+            <img width="40px" src="./cat-icon.jpg" alt="" class="">
+            foodcat
+        </a>
+        <div id="myLinks" style="margin-right: 100px;">
+            <input class="ms-auto" type="text"
+                style="width: 180px; border-radius: 15px;border-color: yellow; background-color: rgb(255, 255, 210);"
+                placeholder="請輸入地址">
+            <a href="./小專_會員登入.html" style="color: inherit; text-decoration: none;" class="fw-bold mt-2">
+                &nbsp;登入
+            </a>
+            <a href="./小專_會員註冊.html" style="color: inherit; text-decoration: none;" class="fw-bold">
+                &nbsp;註冊</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </nav>
+
+
+    <!-- 早餐台式 免外送費 -->
+    <div class="row">
+        <div class="col-6" style="margin-top: 110px;width: fit-content;">
+            <img style="margin-left: 100px;" width="200px" src="./番茄村 icon.png" alt="">
+        </div>
+        <div class="col-6" style="margin-top: 110px;" id="elementToHide">
+            <div class="row" style="width: fit-content;">
+                <div class="col-12">
+                    <small class="form-text">早餐．台式</small>
+                </div>
+                <div class="col-12">
+                    <b style="font-size: 68px;">蕃茄村</b>
+                </div>
+                <div class="col-12">
+                    <b class=""><i class="bi bi-bicycle"></i>免外送服務費 ． <i class="bi bi-bag-check"></i>低消 $ 79</b>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- 導覽列 -->
+    <!-- <div class="sticky-top bg-white navbar navbar-expand-lg" style="margin-left: 100px; padding-top: 100px;opacity: 0.9;">
+        <a href="#hot1">
+            <button class="navbtn fw-bold" style="margin-left: 80px;padding:30px;margin-left: 50px;">
+                人氣精選(6)
+            </button>
+        </a>
+        <a href="#hot2">
+            <button class="navbtn  fw-bold" style="padding:30px;margin-left: 50px;">
+                紫米漢堡(4)
+            </button>
+        </a>
+        <a href="#hot3">
+            <button class="navbtn  fw-bold" style="padding:30px;margin-left: 50px;">
+                紅藜米堡(3)
+            </button>
+        </a>
+        <a href="#hot4">
+            <button class="navbtn  fw-bold" style="padding:30px;margin-left: 50px;">
+                蕃茄咕穀堡(3)
+            </button>
+        </a>
+        <a href="#hot5">
+            <button class="navbtn  fw-bold" style="padding:30px;margin-left: 50px;">
+                蛋餅(7)
+            </button>
+        </a>
+        <a href="#hot6">
+            <button class="navbtn  fw-bold" style="padding:30px;margin-left: 50px;">
+                現烤吐司(6)
+            </button>
+        </a>
+        <a href="#hot7">
+            <button class="navbtn  fw-bold" style="padding:30px;margin-left: 50px;">
+                風味飲料(6)
+            </button>
+        </a>
+
+    </div> -->
+    <!-- 新增左右滑動導覽列(測試) -->
+    <div class="nav-container sticky" style="margin-left: 140px;margin-right: 140px;padding-top: 100px;opacity: 0.9;">
+        <button class="nav-btn left shadow" id="scroll-left">&lt;</button>
+        <div class="nav-wrapper">
+            <ul class="navtest">
+                <li class="navbtn  fw-bold" style="margin-left: 40px;"><a href="#hot1">人氣精選(6)</a></li>
+                <li class="navbtn  fw-bold"><a href="#hot2">紫米漢堡(4)</a></li>
+                <li class="navbtn  fw-bold"><a href="#hot3">紅藜米堡(3)</a></li>
+                <li class="navbtn  fw-bold"><a href="#hot4">蕃茄咕穀堡(3)</a></li>
+                <li class="navbtn  fw-bold"><a href="#hot5">蛋餅(7)</a></li>
+                <li class="navbtn  fw-bold"><a href="#hot6">現烤吐司(6)</a></li>
+                <li class="navbtn  fw-bold"><a href="#hot7">風味飲料(6)</a></li>
+                <li class="navbtn  fw-bold"><a href="">樂活堡(4)</a></li>
+                <li class="navbtn  fw-bold"><a href="">套餐系列(3)</a></li>
+                <li class="navbtn  fw-bold"><a href="">義大利麵(2)</a></li>
+                <li class="navbtn  fw-bold"><a href="">吉士潛艇堡(4)</a></li>
+                <li class="navbtn  fw-bold"><a href="">好吃堡(6)</a></li>
+                <li class="navbtn  fw-bold"><a href="">食尚小品(6)</a></li>
+            </ul>
+        </div>
+        <button class="nav-btn right shadow" id="scroll-right">&gt;</button>
+    </div>
+
+    <!-- 購物車列 -->
+
+    <div class="products">
+        <h2>商品</h2>
+        <div class="product" data-name="商品1" data-price="10">
+            商品1 - $10
+            <button class="quantity-button decrease">-</button>
+            <input type="number" value="1" min="1" class="quantity-input" readonly>
+            <button class="quantity-button increase">+</button>
+            <button class="add-to-cart">加入購物車</button>
+        </div>
+        <div class="product" data-name="商品2" data-price="15">
+            商品2 - $15
+            <button class="quantity-button decrease">-</button>
+            <input type="number" value="1" min="1" class="quantity-input" readonly>
+            <button class="quantity-button increase">+</button>
+            <button class="add-to-cart">放入購物車</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <div class="cart-header">
+            <h2>購物車</h2>
+            <button class="close-cart"><i class="bi bi-x-circle close-btn"></i></button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-items"></div>
+            <div class="cart-total">總金額: $<span>0.00</span></div>
+            <button class="bg-warning rounded border-warning" 
+            style="position: absolute; bottom: 0;width: 400px;height: 40px;">查看付款方式及地址</button>
+        </div>
+    </div>
+
+    <!-- 人氣精選! -->
+    <div style="margin-left: 45px;margin-top: 20px;" id="hot1">
+        <h2 class="fw-bold" style="margin-left: 100px;">
+            <i class="bi bi-fire text-warning"></i> 人氣精選 <i class="bi bi-stars text-info"></i>
+        </h2>
+        <p class="text-muted" style="margin-left: 100px;">大家都點這些。金賀甲！手刀點起來</p>
+    </div>
+    <!-- 人氣精選圖片 -->
+    <div class="row me-5" style="margin-left: 100px">
+        <!-- <button class="popup-button" data-target="popupCard2">顯示卡片 2</button> -->
+        <div class="col-xl-5 figcard mt-4 popup-button" data-target="popupCard1" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>起司蛋餅</b>
+                    <br>
+                    <div class="">$52</div>
+                    <br>
+                    <div class="fw-light">香濃鹹香的起司搭配蛋餅皮，絕對經典的蛋餅口味！</div>
+                </div>
+                <div class="col-6">
+                    <img src="./起司蛋餅.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <!-- 起司蛋餅card -->
+        <div id="popupCard1" class="popup-card">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('popupCard1')"
+                    style="font-size: 24px; color: rgb(255, 225, 0); z-index: 9999;">
+                    <i class="bi bi-x-circle"></i>
+                </span>
+                <div class="card">
+                    <img src="./起司蛋餅.jpg" class="imgsize">
+                </div>
+                <br>
+                <h2>起司蛋餅</h2>
+                <small class="text-muted">香濃鹹香的起司搭配蛋餅皮，絕對經典的蛋餅口味！</small>
+                <br><br>
+                <b>$52</b>
+                <hr>
+                <form>
+                    <label for="multiline-input">餐點備註</label>
+                    <p class="text-muted" style="font-size: small;margin-top: 7px;">
+                        有些餐點無法更改食材或調味料；若無法符合您的要求，請見諒哦
+                    </p>
+                    <textarea id="multiline-input" name="multiline-input" placeholder="例:不要醬料、加辣"></textarea>
+                </form>
+                <b>若此商品目前暫時無法供應</b>
+                <div class="dropdown">
+                    <input class="read" type="text" placeholder="選擇一個選項" readonly>
+                    <div class="dropdown-content">
+                        <div>將此商品從我的訂單移除</div>
+                        <div>取消訂單或請店家打電話給我</div>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br>
+                <hr>
+                <button class="bg-warning rounded border-warning card-shopbtn">加入購物車</button>
+                <div class="products">
+                    <h2>&nbsp;</h2>
+                    <div class="product" data-name="商品1" data-price="10">
+                        商品1 - $10
+                        <button class="quantity-button decrease">-</button>
+                        <input type="number" value="1" min="1" class="quantity-input" readonly>
+                        <button class="quantity-button increase">+</button>
+                        <button class="add-to-cart bg-warning rounded border-warning card-shopbtn">放入購物車</button>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+
+
+        <div class="col-xl-5 figcard mt-4 popup-button" data-target="popupCard2" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>豬排蛋現烤吐司</b>
+                    <br>
+                    <div class="">$72</div>
+                    <br>
+                    <div class="fw-light">口感香脆多汁，一口咬下讓人享受到絕妙的美味融合，絕對是令人難以忘懷的美食享受！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./豬排蛋吐司.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <!-- 豬排蛋吐司Card -->
+        <div id="popupCard2" class="popup-card">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('popupCard2')"
+                    style="font-size: 24px; color: rgb(255, 225, 0); z-index: 9999;">
+                    <i class="bi bi-x-circle"></i>
+                </span>
+                <div class="card">
+                    <img src="./豬排蛋吐司.jfif" class="imgsize">
+                </div>
+                <br>
+                <h2>豬排蛋現烤吐司</h2>
+                <small class="text-muted">口感香脆多汁，一口咬下讓人享受到絕妙的美味融合，絕對是令人難以忘懷的美食享受！</small>
+                <br><br>
+                <b>$72</b>
+                <hr>
+                <form>
+                    <label for="multiline-input">餐點備註</label>
+                    <p class="text-muted" style="font-size: small;margin-top: 7px;">
+                        有些餐點無法更改食材或調味料；若無法符合您的要求，請見諒哦
+                    </p>
+                    <textarea id="multiline-input" name="multiline-input" placeholder="例:不要醬料、加辣"></textarea>
+                </form>
+                <b>若此商品目前暫時無法供應</b>
+                <div class="dropdown">
+                    <input class="read" type="text" placeholder="選擇一個選項" readonly>
+                    <div class="dropdown-content">
+                        <div>將此商品從我的訂單移除</div>
+                        <div>取消訂單或請店家打電話給我</div>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br>
+                <hr>
+                <button class="bg-warning rounded border-warning card-shopbtn" data-target="">加入購物車</button>
+                <br>
+            </div>
+        </div>
+
+        <div class="col-xl-5 figcard mt-4 popup-button" data-target="popupCard3" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>薯條</b>
+                    <br>
+                    <div class="">$52</div>
+                    <br>
+                    <div class="fw-light">長條狀的馬鈴薯經油炸後內裡鬆軟、外表酥脆，是必點的炸物！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./薯條.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+
+        <!-- 薯條card -->
+        <div id="popupCard3" class="popup-card">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('popupCard3')"
+                    style="font-size: 24px; color: rgb(255, 225, 0); z-index: 9999;">
+                    <i class="bi bi-x-circle"></i>
+                </span>
+                <div class="card">
+                    <img src="./薯條.jpg" class="imgsize">
+                </div>
+                <br>
+                <h2>薯條</h2>
+                <small class="text-muted">長條狀的馬鈴薯經油炸後內裡鬆軟、外表酥脆，是必點的炸物！</small>
+                <br><br>
+                <b>$52</b>
+                <hr>
+                <form>
+                    <label for="multiline-input">餐點備註</label>
+                    <p class="text-muted" style="font-size: small;margin-top: 7px;">
+                        有些餐點無法更改食材或調味料；若無法符合您的要求，請見諒哦
+                    </p>
+                    <textarea id="multiline-input" name="multiline-input" placeholder="例:不要醬料、加辣"></textarea>
+                </form>
+                <b>若此商品目前暫時無法供應</b>
+                <div class="dropdown">
+                    <input class="read" type="text" placeholder="選擇一個選項" readonly>
+                    <div class="dropdown-content">
+                        <div>將此商品從我的訂單移除</div>
+                        <div>取消訂單或請店家打電話給我</div>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br>
+                <hr>
+                <button class="bg-warning rounded border-warning card-shopbtn" data-target="">加入購物車</button>
+                <br>
+            </div>
+        </div>
+
+        <div class="col-xl-5 figcard mt-4 popup-button" data-target="popupCard4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>麥克雞塊</b>
+                    <br>
+                    <div class="">$52</div>
+                    <br>
+                    <div class="fw-light">香脆外皮包覆著多汁嫩肉，一口咬下，美味滿溢，讓人難以忘懷！(每份五塊，圖片僅供參考)</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./上校雞塊8塊-m.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+
+        <!-- 雞塊card -->
+        <div id="popupCard4" class="popup-card">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('popupCard4')"
+                    style="font-size: 24px; color: rgb(255, 225, 0); z-index: 9999;">
+                    <i class="bi bi-x-circle"></i>
+                </span>
+                <div class="card">
+                    <img src="./上校雞塊8塊-m.jpg" class="imgsize">
+                </div>
+                <br>
+                <h2>麥克雞塊</h2>
+                <small class="text-muted">香脆外皮包覆著多汁嫩肉，一口咬下，美味滿溢，讓人難以忘懷！(每份五塊，圖片僅供參考)</small>
+                <br><br>
+                <b>$52</b>
+                <hr>
+                <form>
+                    <label for="multiline-input">餐點備註</label>
+                    <p class="text-muted" style="font-size: small;margin-top: 7px;">
+                        有些餐點無法更改食材或調味料；若無法符合您的要求，請見諒哦
+                    </p>
+                    <textarea id="multiline-input" name="multiline-input" placeholder="例:不要醬料、加辣"></textarea>
+                </form>
+                <b>若此商品目前暫時無法供應</b>
+                <div class="dropdown">
+                    <input class="read" type="text" placeholder="選擇一個選項" readonly>
+                    <div class="dropdown-content">
+                        <div>將此商品從我的訂單移除</div>
+                        <div>取消訂單或請店家打電話給我</div>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br>
+                <hr>
+                <button class="bg-warning rounded border-warning card-shopbtn" data-target="">加入購物車</button>
+                <br>
+            </div>
+        </div>
+
+        <div class="col-xl-5 figcard mt-4 popup-button" data-target="popupCard5" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>好事花生牛肉紫米漢堡</b>
+                    <br>
+                    <div class="">$104</div>
+                    <br>
+                    <div class="fw-light">結合了花生香、牛肉鮮美與紫米營養，一口咬下，豐富的層次與口感令人愛不釋手！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./好事花生紫米堡.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+
+        <!-- 紫米堡card -->
+        <div id="popupCard5" class="popup-card">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('popupCard5')"
+                    style="font-size: 24px; color: rgb(255, 225, 0); z-index: 9999;">
+                    <i class="bi bi-x-circle"></i>
+                </span>
+                <div class="card">
+                    <img src="./好事花生紫米堡.jfif" class="imgsize">
+                </div>
+                <br>
+                <h2>好事花生牛肉紫米漢堡</h2>
+                <small class="text-muted">結合了花生香、牛肉鮮美與紫米營養，一口咬下，豐富的層次與口感令人愛不釋手！</small>
+                <br><br>
+                <b>$104</b>
+                <hr>
+                <form>
+                    <label for="multiline-input">餐點備註</label>
+                    <p class="text-muted" style="font-size: small;margin-top: 7px;">
+                        有些餐點無法更改食材或調味料；若無法符合您的要求，請見諒哦
+                    </p>
+                    <textarea id="multiline-input" name="multiline-input" placeholder="例:不要醬料、加辣"></textarea>
+                </form>
+                <b>若此商品目前暫時無法供應</b>
+                <div class="dropdown">
+                    <input class="read" type="text" placeholder="選擇一個選項" readonly>
+                    <div class="dropdown-content">
+                        <div>將此商品從我的訂單移除</div>
+                        <div>取消訂單或請店家打電話給我</div>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br>
+                <hr>
+                <button class="bg-warning rounded border-warning card-shopbtn" data-target="">加入購物車</button>
+                <br>
+            </div>
+        </div>
+
+        <div class="col-xl-5 figcard mt-4 popup-button" data-target="popupCard6" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>玉米蛋餅</b>
+                    <br>
+                    <div class="">$46</div>
+                    <br>
+                    <div class="fw-light">香甜玉米夾入蛋餅裡，是大人、小孩都喜愛的選擇！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./玉米蛋餅.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+
+        <!-- 玉米蛋餅card -->
+        <div id="popupCard6" class="popup-card">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('popupCard6')"
+                    style="font-size: 24px; color: rgb(255, 225, 0); z-index: 9999;">
+                    <i class="bi bi-x-circle"></i>
+                </span>
+                <div class="card">
+                    <img src="./玉米蛋餅.jpg" class="imgsize">
+                </div>
+                <br>
+                <h2>玉米蛋餅</h2>
+                <small class="text-muted">香甜玉米夾入蛋餅裡，是大人、小孩都喜愛的選擇！</small>
+                <br><br>
+                <b>$46</b>
+                <hr>
+                <form>
+                    <label for="multiline-input">餐點備註</label>
+                    <p class="text-muted" style="font-size: small;margin-top: 7px;">
+                        有些餐點無法更改食材或調味料；若無法符合您的要求，請見諒哦
+                    </p>
+                    <textarea id="multiline-input" name="multiline-input" placeholder="例:不要醬料、加辣"></textarea>
+                </form>
+                <b>若此商品目前暫時無法供應</b>
+                <div class="dropdown">
+                    <input class="read" type="text" placeholder="選擇一個選項" readonly>
+                    <div class="dropdown-content">
+                        <div>將此商品從我的訂單移除</div>
+                        <div>取消訂單或請店家打電話給我</div>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br>
+                <hr>
+                <button class="bg-warning rounded border-warning card-shopbtn" data-target="">加入購物車</button>
+                <br>
+            </div>
+        </div>
+
+    </div>
+    <!-- 紫米漢堡 -->
+    <div style="margin-left: 45px;margin-top: 40px;">
+        <h2 class="fw-bold" style="margin-left: 100px;">
+            紫米漢堡
+        </h2>
+    </div>
+    <!-- 紫米漢堡圖片 -->
+    <div class="row me-5 mt-3" style="margin-left: 100px" id="hot2">
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>好事花生牛肉紫米漢堡</b>
+                    <br>
+                    <div class="">$104</div>
+                    <br>
+                    <div class="fw-light">結合了花生香、牛肉鮮美與紫米營養，一口咬下，豐富的層次與口感令人愛不釋手！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./好事花生紫米堡.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>夏威夷蔬果紫米漢堡</b>
+                    <br>
+                    <div class="">$72</div>
+                    <br>
+                    <div class="fw-light">融合了新鮮多彩的蔬果與香氣四溢的紫米，每一口都是大自然的美味盛宴 ！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./夏威夷蔬果紫米.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>黑胡椒豬排紫米漢堡</b>
+                    <br>
+                    <div class="">$78</div>
+                    <br>
+                    <div class="fw-light">結合了香氣濃郁的黑胡椒豬排與營養豐富的紫米，在每一口中展現出美味與滿足的絕妙組合！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./黑胡椒豬排紫米.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>和風雞腿紫米漢堡</b>
+                    <br>
+                    <div class="">$98</div>
+                    <br>
+                    <div class="fw-light">融合了清爽的和風風味與多汁的雞腿肉，每一口都散發著令人愉悅的美味誘惑！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./和風雞腿紫米.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 紅藜米堡 -->
+    <div style="margin-left: 45px;margin-top: 40px;" id="hot3">
+        <h2 class="fw-bold" style="margin-left: 100px;">
+            紅藜米堡
+        </h2>
+    </div>
+    <!-- 紅藜米堡圖片 -->
+    <div class="row me-5 mt-3" style="margin-left: 100px">
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>和風雞腿米漢堡</b>
+                    <br>
+                    <div class="">$104</div>
+                    <br>
+                    <div class="fw-light">口感酥脆外皮包裹著嫩滑雞腿，散發著日式風味的美味誘人，令人回味無窮！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./和風雞腿米漢堡.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>牛肉壽喜燒米漢堡</b>
+                    <br>
+                    <div class="">$104</div>
+                    <br>
+                    <div class="fw-light">結合了濃郁的壽喜燒醬汁與多汁的牛肉，一口咬下即能品味到亞洲美食的獨特風情，令人讚不絕口！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./牛肉壽喜燒米堡.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>海味鮮枝米漢堡</b>
+                    <br>
+                    <div class="">$98</div>
+                    <br>
+                    <div class="fw-light">混合了新鮮的海鮮和豐富的米飯，每一口都散發著海洋的鮮甜，讓人彷彿置身於海濱的美味饗宴中！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./鮮枝米堡.jpeg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 番茄咕穀堡 -->
+    <div style="margin-left: 45px;margin-top: 40px;" id="hot4">
+        <h2 class="fw-bold" style="margin-left: 100px;">
+            蕃茄咕穀堡
+        </h2>
+    </div>
+    <!-- 番茄咕穀堡圖片 -->
+    <div class="row me-5 mt-3" style="margin-left: 100px">
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>黃金雞柳蕃茄咕穀堡</b>
+                    <br>
+                    <div class="">$85</div>
+                    <br>
+                    <div class="fw-light">脆嫩的雞柳搭配著新鮮蕃茄，口感豐富，每一口都充滿了美味與滿足，令人難以抗拒！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./黃金雞柳咕穀.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>德腸起司蕃茄咕穀堡</b>
+                    <br>
+                    <div class="">$72</div>
+                    <br>
+                    <div class="fw-light">濃郁的德式香腸和蕃茄的酸甜完美結合，加上融化的起司，每一口都是絕妙的味覺享受，令人愛不釋手！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./德腸起司蕃茄咕穀.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>田園雞肉沙拉蕃茄咕穀堡</b>
+                    <br>
+                    <div class="">$85</div>
+                    <br>
+                    <div class="fw-light">清爽的雞肉沙拉搭配新鮮蕃茄，口感豐富多層，每一口都彷彿在味蕾上展開一場田園的美好旅程，令人愉悅無比！</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./田園雞肉沙拉蕃茄咕穀堡.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 蛋餅 -->
+    <div style="margin-left: 45px;margin-top: 40px;" id="hot5">
+        <h2 class="fw-bold" style="margin-left: 100px;">
+            蛋餅
+        </h2>
+    </div>
+    <!-- 蛋餅圖片 -->
+    <div class="row me-5 mt-3" style="margin-left: 100px">
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>珍珠玉米蛋餅</b>
+                    <br>
+                    <div class="">$46</div>
+                    <br>
+                    <div class="fw-light">香甜玉米夾入蛋餅裡，是大人、小孩喜愛的選擇！ <p></p>
+                        <i class="bi bi-fire text-warning"></i> 人氣精選 <i class="bi bi-stars text-info"></i>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./玉米蛋餅.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>起司蛋餅</b>
+                    <br>
+                    <div class="">$52</div>
+                    <br>
+                    <div class="fw-light">香濃鹹香的起司搭配蛋餅皮，絕對經典的蛋餅口味！<p></p>
+                        <i class="bi bi-fire text-warning"></i> 人氣精選 <i class="bi bi-stars text-info"></i>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./起司蛋餅.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>肉鬆蛋餅</b>
+                    <br>
+                    <div class="">$52</div>
+                    <br>
+                    <div class="fw-light">肉品原產地：臺灣豬肉</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./肉鬆蛋餅.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>培根蛋餅</b>
+                    <br>
+                    <div class="">$65</div>
+                    <br>
+                    <div class="fw-light">肉品原產地：臺灣豬肉</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./培根蛋餅.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>鮪魚蛋餅</b>
+                    <br>
+                    <div class="">$65</div>
+                    <br>
+                    <div class="fw-light">鮪魚含洋蔥，不要洋蔥需要另行告知</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./鮪魚蛋餅.jpg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>火腿蛋餅</b>
+                    <br>
+                    <div class="">$59</div>
+                    <br>
+                    <div class="fw-light">肉品原產地：臺灣豬肉</div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./火腿蛋餅.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>豬排蛋餅</b>
+                    <br>
+                    <div class="">$72</div>
+                    <br>
+                    <div class="fw-light">肉品原產地：臺灣豬肉 <p></p>
+                        <i class="bi bi-fire text-warning"></i> 人氣精選 <i class="bi bi-stars text-info"></i>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <img src="./豬排蛋餅.webp" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 現烤吐司 -->
+    <div style="margin-left: 45px;margin-top: 40px;" id="hot6">
+        <h2 class="fw-bold" style="margin-left: 100px;">
+            現烤吐司
+        </h2>
+    </div>
+    <!-- 現烤吐司圖片 -->
+    <div class="row me-5 mt-3" style="margin-left: 100px">
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>草莓吐司</b>
+                    <br>
+                    <div class="">$20</div>
+                    <br>
+                    <div class="fw-light">酸甜的草莓醬，搭配上吐司香氣，絕配的幸福滋味！</div>
+                </div>
+                <div class="col-6">
+                    <img src="./草莓吐司.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>巧克力吐司</b>
+                    <br>
+                    <div class="">$20</div>
+                    <br>
+                    <div class="fw-light">
+                        烤過的吐司抹上香甜的巧克力醬，經典口味必點！
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="./巧克力吐司.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>花生吐司</b>
+                    <br>
+                    <div class="">$20</div>
+                    <br>
+                    <div class="fw-light">香濃滑順的花生醬搭配吐司，絲滑入口，等你帶我走！</div>
+                </div>
+                <div class="col-6">
+                    <img src="./花生吐司.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>奶酥吐司</b>
+                    <br>
+                    <div class="">$20</div>
+                    <br>
+                    <div class="fw-light">甜而不膩的奶酥，配上吐司奶香味十足。</div>
+                </div>
+                <div class="col-6">
+                    <img src="./奶酥吐司.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>火腿蛋現烤吐司</b>
+                    <br>
+                    <div class="">$52</div>
+                    <br>
+                    <div class="fw-light">肉品原產地：臺灣豬肉(美生菜)</div>
+                </div>
+                <div class="col-6">
+                    <img src="./火腿蛋吐司.jpeg" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>起司蛋吐司</b>
+                    <br>
+                    <div class="">$46</div>
+                    <br>
+                    <div class="fw-light">口感酥脆、滋味濃郁，讓人一試難忘。</div>
+                </div>
+                <div class="col-6">
+                    <img src="./起司蛋吐司.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 風味飲料 -->
+    <div style="margin-left: 45px;margin-top: 40px;" id="hot7">
+        <h2 class="fw-bold" style="margin-left: 100px;">
+            風味飲料
+        </h2>
+    </div>
+    <!-- 風味飲料圖片 -->
+    <div class="row me-5 mt-3" style="margin-left: 100px">
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>阿薩姆紅茶[中]</b>
+                    <br>
+                    <div class="">$20</div>
+                    <br>
+                    <div class="fw-light">冰/熱</div>
+                </div>
+                <div class="col-6">
+                    <img src="./阿薩姆紅茶.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>阿薩姆紅茶[大]</b>
+                    <br>
+                    <div class="">$27</div>
+                    <br>
+                    <div class="fw-light">
+                        冰/熱
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="./阿薩姆紅茶.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>奶茶[中]</b>
+                    <br>
+                    <div class="">$27</div>
+                    <br>
+                    <div class="fw-light">
+                        冰/熱
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="./奶茶.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>奶茶[大]</b>
+                    <br>
+                    <div class="">$34</div>
+                    <br>
+                    <div class="fw-light">冰/熱</div>
+                </div>
+                <div class="col-6">
+                    <img src="./奶茶.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>非基因改造豆漿[中]</b>
+                    <br>
+                    <div class="">$27</div>
+                    <br>
+                    <div class="fw-light">冰/熱</div>
+                </div>
+                <div class="col-6">
+                    <img src="./豆漿.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 figcard mt-4" style="margin-left: 50px">
+            <div class="row">
+                <div class="col-6" style="margin-top: 15px;">
+                    <b>非基因改造豆漿[大]</b>
+                    <br>
+                    <div class="">$34</div>
+                    <br>
+                    <div class="fw-light">冰/熱</div>
+                </div>
+                <div class="col-6">
+                    <img src="./豆漿.jfif" alt="" class="imgdemo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 背景遮罩 -->
+    <div class="popup-overlay" onclick="closeAllPopups()"></div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <hr>
+    <!-- 底部logo -->
+    <div style="margin-left: 200px;">
+        <img width="40px" src="./cat-icon.jpg" alt="" class="">
+        foodcat
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://th.bing.com/th/id/OIP.wSfV8Cn4OpCvtksmZNy42gAAAA?rs=1&pid=ImgDetMain"><i
+                class="bi bi-facebook"></i></a>
+        <a
+            href="https://static.billboard.com/files/2021/04/IU-cr-Edam-Entertainment-2021-billboard-1548-1617890783-compressed.jpg">
+            <i class="bi bi-instagram" style="color: rgb(255, 55, 195);"></i>
+        </a>
+    </div>
+    <!-- 回到頂部按鈕 -->
+    <button class="go-top" onclick="goToTop()">Top</button>
+
+    <hr>
+    <!-- 最底層 -->
+    <div class="row" style="margin-left: 200px; ">
+        <div class="col-lg-2">
+            ©2024foodcat
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-4 mt-4"><a href="" class="footer">新聞室</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">媒合外送夥伴</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">每月優惠餐廳</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">客服中心</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">企業徵才</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">聯盟行銷合作</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">隱私權條款</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">企業訂餐</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">退款帳戶條款與條件</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">店家合作</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">合作夥伴</a></div>
+                <div class="col-sm-4 mt-4"><a href="" class="footer">所有城市</a></div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+</body>
+
+<script>
+    window.onresize = function () {
+        var element = document.getElementById("elementToHide");
+        if (window.innerWidth < 768) { // 調整此數值以設定觸發隱藏的網頁寬度閾值
+            element.classList.add("hidden");
+        } else {
+            element.classList.remove("hidden");
+        }
+    };
+
+
+
+    // 導覽列左右滑動設定
+    // script.js
+    document.addEventListener('DOMContentLoaded', function () {
+        const scrollAmount = 150; // 每次滾動的像素數量
+        const scrollLeftBtn = document.getElementById('scroll-left');
+        const scrollRightBtn = document.getElementById('scroll-right');
+        const navWrapper = document.querySelector('.nav-wrapper');
+        const navtest = document.querySelector('.navtest');
+
+        function updateButtons() {
+            // 檢查是否需要顯示/隱藏按鈕
+            const maxScrollLeft = nav.scrollWidth - navWrapper.clientWidth;
+            scrollLeftBtn.style.display = navWrapper.scrollLeft > 0 ? 'block' : 'none';
+            scrollRightBtn.style.display = navWrapper.scrollLeft < maxScrollLeft ? 'block' : 'none';
+        }
+
+        scrollLeftBtn.addEventListener('click', function () {
+            navWrapper.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        scrollRightBtn.addEventListener('click', function () {
+            navWrapper.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        // 初始化按鈕狀態
+        updateButtons();
+
+        // 添加滾動事件監聽器來更新按鈕狀態
+        navWrapper.addEventListener('scroll', updateButtons);
+    });
+
+
+
+    // 漢堡選單JS
+
+    function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+
+
+    // 滾動條滾動時檢查顯示或隱藏回到頂部按鈕
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.querySelector('.go-top').classList.add('show');
+        } else {
+            document.querySelector('.go-top').classList.remove('show');
+        }
+    }
+
+    // 回到頂部函數
+    function goToTop() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    //card呼叫JS
+
+    // 關閉彈出式卡片
+    function closePopup(id) {
+        document.getElementById(id).classList.remove('show');
+        document.querySelector('.popup-overlay').classList.remove('show');
+    }
+
+    // 關閉所有彈出式卡片
+    function closeAllPopups() {
+        document.querySelectorAll('.popup-card').forEach(function (card) {
+            card.classList.remove('show');
+        });
+        document.querySelector('.popup-overlay').classList.remove('show');
+    }
+
+    // 當頁面加載完畢後設置按鈕的點擊事件
+    document.addEventListener("DOMContentLoaded", function () {
+        const popupButtons = document.querySelectorAll(".popup-button");
+
+        // 為每個按鈕添加點擊事件
+        popupButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const targetId = button.getAttribute("data-target");
+                // 先關閉所有彈出式卡片
+                closeAllPopups();
+                // 再顯示目標卡片和背景遮罩
+                document.getElementById(targetId).classList.add('show');
+                document.querySelector('.popup-overlay').classList.add('show');
+            });
+        });
+    });
+
+    // 下拉選單JS
+    // 為下拉菜單項目添加點擊事件，將所選值設置為輸入框的值
+    document.querySelectorAll('.dropdown-content div').forEach(function (item) {
+        item.addEventListener('click', function () {
+            var input = item.parentElement.previousElementSibling;
+            input.value = item.textContent;
+            item.parentElement.style.display = 'none'; // 隱藏下拉菜單
+        });
+    });
+
+    // 點擊輸入框之外的地方隱藏下拉菜單
+    document.addEventListener('click', function (event) {
+        var dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(function (dropdown) {
+            if (!dropdown.parentElement.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    });
+
+    // 輸入框獲得焦點時顯示下拉菜單
+    document.querySelectorAll('.dropdown input').forEach(function (input) {
+        input.addEventListener('focus', function () {
+            this.nextElementSibling.style.display = 'block';
+        });
+    });
+
+    //加入購物車 JS
+    document.addEventListener("DOMContentLoaded", function() {
+            const addToCartButtons = document.querySelectorAll(".add-to-cart");
+            const cart = document.querySelector(".cart");
+            const closeCartButton = document.querySelector(".close-cart");
+            const cartItemsElement = document.querySelector(".cart-items");
+            const cartTotalElement = document.querySelector(".cart-total span");
+            let cartItems = [];
+
+            // 加入購物車
+            function addToCart(name, price, quantity) {
+                const existingItemIndex = cartItems.findIndex(item => item.name === name);
+                if (existingItemIndex !== -1) {
+                    cartItems[existingItemIndex].quantity += quantity;
+                } else {
+                    cartItems.push({ name, price, quantity });
+                }
+                renderCart();
+                cart.classList.add("show");
+            }
+
+            // 從購物車中刪除商品
+            function removeFromCart(index) {
+                cartItems.splice(index, 1);
+                renderCart();
+            }
+
+            // 渲染購物車
+            function renderCart() {
+                cartItemsElement.innerHTML = "";
+                let total = 0;
+                cartItems.forEach((item, index) => {
+                    const cartItem = document.createElement("div");
+                    cartItem.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
+                    const removeButton = document.createElement("button");
+                    removeButton.textContent = "移除";
+                    removeButton.addEventListener("click", (event) => {
+                        event.stopPropagation(); // 阻止事件冒泡
+                        removeFromCart(index);
+                    });
+                    cartItem.appendChild(removeButton);
+                    cartItemsElement.appendChild(cartItem);
+                    total += item.price * item.quantity;
+                });
+                cartTotalElement.textContent = total.toFixed(2);
+            }
+
+            // 為每個加入購物車按鈕添加點擊事件監聽器
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const product = button.parentElement;
+                    const name = product.dataset.name;
+                    const price = parseFloat(product.dataset.price);
+                    const quantityInput = product.querySelector(".quantity-input");
+                    const quantity = parseInt(quantityInput.value);
+                    addToCart(name, price, quantity);
+                });
+            });
+
+            // 為減少按鈕添加事件監聽器
+            document.querySelectorAll('.decrease').forEach(item => {
+                item.addEventListener('click', event => {
+                    let input = item.nextElementSibling;
+                    let value = parseInt(input.value);
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                });
+            });
+
+            // 為增加按鈕添加事件監聽器
+            document.querySelectorAll('.increase').forEach(item => {
+                item.addEventListener('click', event => {
+                    let input = item.previousElementSibling;
+                    let value = parseInt(input.value);
+                    input.value = value + 1;
+                });
+            });
+
+            // 關閉購物車
+            closeCartButton.addEventListener("click", () => {
+                cart.classList.remove("show");
+            });
+
+            // 在購物車以外的地方點擊時關閉購物車
+            document.addEventListener("click", (event) => {
+                if (!cart.contains(event.target) && !event.target.classList.contains("add-to-cart") && !event.target.classList.contains("quantity-button")) {
+                    cart.classList.remove("show");
+                }
+            });
+        });
+</script>
+
+</html>
